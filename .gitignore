@@ -1,0 +1,37 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+.cache/
+build/
+
+# Tailwind
+tailwind.config.js.backup
+
+# Test & coverage
+coverage/
+*.lcov
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE/Editor files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Log files
+logs/
+*.log
+
+# OS/System files
+Thumbs.db
