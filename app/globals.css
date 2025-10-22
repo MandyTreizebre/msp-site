@@ -4,5 +4,10 @@
 
 @font-face {
   font-family: 'workSans';
-  src: url('/public/fonts/WorkSans-Bold.ttf') format('ttf');
+  src: url('/fonts/WorkSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'workSans';
+  src: url('/fonts/MerriweatherSans-Medium.ttf') format('truetype');
 }

@@ -1,5 +1,6 @@
 module.exports = {
   content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}"
   ],
@@ -9,7 +10,10 @@ module.exports = {
         mspGreen: "#185959",
       },
       fontFamily: {
-        workSans: ['workSans', 'sans-serif'],
+        workSans: ['WorkSans', 'sans-serif'],
+      },
+      fontFamily: {
+        merriWeather: ['MerriWeather', 'sans-serif'],
       },
     }
   },
