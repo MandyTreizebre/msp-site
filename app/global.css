@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth; 
+}
+
+:root {
+  --msp-green: #195f63;
+  --msp-green-200: #d9efef;
+  --white: #fff;
+  --text: #1f2937;
+}
