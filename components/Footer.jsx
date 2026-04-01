@@ -1,9 +1,12 @@
 'use client'
+import "../styles/Footer.css"
 
 export default function Header() {
   return (
-      <footer className="bg-white border-t mt-12 p-4 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Maison de Santé de [Ville]. Tous droits réservés.
+      <footer>
+        <p>
+          © {new Date().getFullYear()} Maison de Santé de Varennes-sur-Allier. Tous droits réservés.
+        </p>
       </footer>
   )
 }

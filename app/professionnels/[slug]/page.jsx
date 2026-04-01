@@ -2,10 +2,12 @@
 import { useState, useEffect } from "react"
 import { useParams } from 'next/navigation'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons'
+import "../../../styles/Professionals.css"
 
 const WEEKDAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
 
-// Regroupe {weekday,start,end} -> [{weekday, ranges: ["08:00 à 13:30", "14:30 à 19:45"]}]
 function groupByDay(weekly_hours = []) {
   const map = new Map()
   for (const h of weekly_hours) {
@@ -24,6 +26,63 @@ function groupByDay(weekly_hours = []) {
     }))
 }
 
+function ProfessionalCard({ pro }) {
+  const hasHours = pro.weekly_hours && pro.weekly_hours.length > 0
+
+  return (
+    <article className="pro-card">
+      <div className="pro-card-main">
+        <header className="pro-card-header">
+          <h3 className="pro-name">{pro.name}</h3>
+        </header>
+
+        <div className="pro-card-body">
+          {pro.address && (
+            <p className="pro-line">
+              <span> <FontAwesomeIcon icon={faLocationDot} className="pro-icon" /> </span>
+              <span>
+                <span className="pro-label">Adresse :</span> {pro.address}
+              </span>
+            </p>
+          )}
+          {pro.telephone && (
+            <p className="pro-line">
+              <span > <FontAwesomeIcon icon={faPhone} className="pro-icon"/> </span>
+              <span>
+                <span className="pro-label">Téléphone :</span> <a className="pro-phone" href={`tel:${pro.telephone}`}>
+                  {pro.telephone}
+                </a>
+              </span>
+            </p>
+          )}
+        </div>
+      </div>
+
+      {hasHours ? (
+        <div className="pro-hours">
+          <p className="pro-hours-title">Horaires de consultation</p>
+          <ul className="pro-hours-list">
+            {groupByDay(pro.weekly_hours).map(day => (
+              <li key={day.weekday}>
+                <span className="pro-hours-day">
+                  {WEEKDAYS[day.weekday]}
+                </span>
+                <span className="pro-hours-ranges">
+                  {day.ranges.join(" · ")}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div className="pro-hours">
+          <p className="pro-no-hours">Horaires non renseignés.</p>
+        </div>
+      )}
+    </article>
+  )
+}
+
 export default function ProfessionalsSection() {
   const { slug } = useParams()
   const [professionals, setProfessionals] = useState([])
@@ -33,34 +92,20 @@ export default function ProfessionalsSection() {
     if (!slug) return
     axios.get(`/api/professionals/${slug}`)
       .then((res) => setProfessionals(res.data))
-      .catch(() => setError("Une erreur s’est produite lors de la récupération des professionnels."))
+      .catch(() =>
+        setError("Une erreur s’est produite lors de la récupération des professionnels.")
+      )
   }, [slug])
 
   return (
-    <section>
-      <h1>Professionnels – {slug}</h1>
+    <section className="pros-section">
+      {error && <div className="pros-error">{error}</div>}
 
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-
-      {professionals.map((pro) => (
-        <div key={pro.id} className="mb-6 border rounded-lg p-4">
-          <p className="font-semibold text-lg">{pro.name}</p>
-          <p className="text-sm">{pro.address}</p>
-          <p className="text-sm mb-2">{pro.telephone}</p>
-
-          {(!pro.weekly_hours || pro.weekly_hours.length === 0) ? (
-            <p className="italic text-gray-500">Horaires non renseignés</p>
-          ) : (
-            <ul className="text-sm list-disc pl-4">
-              {groupByDay(pro.weekly_hours).map(day => (
-                <li key={day.weekday}>
-                  {WEEKDAYS[day.weekday]} — {day.ranges.join(' - ')}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ))}
+      <div className="pros-grid">
+        {professionals.map((pro) => (
+          <ProfessionalCard key={pro.id} pro={pro} />
+        ))}
+      </div>
     </section>
   )
 }

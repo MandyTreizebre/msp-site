@@ -31,6 +31,8 @@ export default function Header() {
     return () => document.removeEventListener('click', handleClickOutside)
   }, [])
 
+
+  // Chargement des spécialisations
   useEffect(() => {
     axios.get('/api/specialisations')
       .then((res) => setSpecialisations(res.data))
@@ -41,63 +43,36 @@ export default function Header() {
   const toggleDropdown = () => setIsOpen((prev) => !prev)
   const closeDropdown = () => setIsOpen(false)
   const toggleNav = () => setNavIsOpen((prev) => !prev)
+  
 
   return (
-    <div className="page">
-      {/* Header */}
+    <div>
       <header className="header">
-        <Link
-          href="/"
-          aria-label="Visiter la page d'accueil de la Maison de santé de Varennes-Sur-Allier"
-          className="logo"
-        >
-          <Image src="/logo.png" alt="Logo MSP" width={60} height={60} className="logo-image" />
-          <span className="sr-only">Accueil</span>
+
+        <Link href="/" aria-label="Visiter la page d'accueil de la Maison de santé de Varennes-Sur-Allier">
+          <Image src="/logo.png" alt="Logo MSP" width={120} height={120} />
         </Link>
 
         {/* Bouton menu mobile */}
-        <button
-          className="mobile-trigger"
-          onClick={toggleNav}
-          aria-expanded={navIsOpen}
-          aria-controls="primary-navigation"
-        >
+        <button className="mobile-trigger" onClick={toggleNav} aria-expanded={navIsOpen} aria-controls="primary-navigation">
           Menu
         </button>
 
-        {/* Navigation */}
-        <nav
-          id="primary-navigation"
-          className={`navigation ${navIsOpen ? 'is-open' : ''}`}
-        >
-          <Link
-            href="/"
-            className={`nav-link ${pathname === '/' ? 'is-active' : ''}`}
-          >
+        {/*Nav*/}
+        <nav className={`navigation ${navIsOpen ? 'is-open' : ''}`}>
+
+          <Link href="/" className="nav-link">
             Accueil
           </Link>
 
-          {/* Dropdown Offres de soins */}
-          <div className="dropdown" ref={dropdownRef}>
-            <button
-              className="dropdown-btn"
-              onClick={toggleDropdown}
-              aria-haspopup="menu"
-              aria-expanded={isOpen}
-              aria-controls="offre-de-soins-menu"
-            >
-              <span className="dropdown-label">Offre de soins</span>
-              <FontAwesomeIcon
-                icon={faChevronDown}
-                className={`icon ${isOpen ? 'rotate' : ''}`}
-              />
+          {/* Dropdown */}
+          <div ref={dropdownRef}>
+            <button className="dropdown-btn" onClick={toggleDropdown} aria-haspopup="menu" aria-expanded={isOpen} aria-controls="offre-de-soins-menu">
+              <span>Offre de soins</span>
+              <FontAwesomeIcon icon={faChevronDown} className={`icon ${isOpen ? 'rotate' : ''}`}/>
             </button>
 
-            <ul
-              id="offre-de-soins-menu"
-              role="menu"
-              className={`dropdown-menu ${isOpen ? 'open' : ''}`}
-            >
+            <ul role="menu" className={`dropdown-menu ${isOpen ? 'open' : ''}`}>
               {error && (
                 <li className="dropdown-error" role="alert">
                   {error}
@@ -123,56 +98,13 @@ export default function Header() {
             </ul>
           </div>
 
-          <Link href="/informations-sante" className="nav-link">
-            Informations santé
-          </Link>
+          <Link href="/informations-sante" className="nav-link"> Informations santé </Link>
 
-          <Link href="/contact" className="nav-link">
-            Contact
-          </Link>
+          <Link href="/contact" className="nav-link"> Contact </Link>
 
-          <Link href="/gardes" className="nav-link urgent">
-            Urgences et gardes
-          </Link>
+          <Link href="/gardes" className="nav-link urgent"> Urgences et gardes </Link>
         </nav>
       </header>
-
-      {/* Hero */}
-      <section className="hero">
-        <div className="hero-content">
-          <h1 className="hero-title">Bienvenue à la MSP</h1>
-          <p className="hero-subtitle">Maison de Santé Pluriprofessionnelle de Varennes-Sur-Allier</p>
-        </div>
-      </section>
-
-      {/* Cartes d'accueil */}
-      <main className="main">
-        <section className="cards">
-          <div className="card">
-            <div className="card-head">
-              <h2 className="card-title">Notre Équipe</h2>
-              <Image src="/icons/doctor.png" alt="Pictogramme médecin" width={40} height={40} />
-            </div>
-            <p>Des professionnels de santé à votre écoute.</p>
-          </div>
-
-          <div className="card">
-            <div className="card-head">
-              <h2 className="card-title">Urgences &amp; Gardes</h2>
-              <Image src="/icons/urgency.png" alt="Pictogramme urgences" width={40} height={40} />
-            </div>
-            <Link href="/gardes" className="card-link">Accéder à la page</Link>
-          </div>
-
-          <div className="card">
-            <div className="card-head">
-              <h2 className="card-title">Nous contacter</h2>
-              <Image src="/icons/contact-information.png" alt="Pictogramme contact" width={40} height={40} />
-            </div>
-            <p>Du texte à mettre ici.</p>
-          </div>
-        </section>
-      </main>
     </div>
   )
 }

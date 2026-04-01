@@ -7,7 +7,30 @@
 
 :root {
   --msp-green: #195f63;
+  --msp-green-dark: #0f4f50;
   --msp-green-200: #d9efef;
+  --msp-green-light: #96aca1;
+  --sand-color: #ddb892;
+  --muted: #425255;
+  --muted-p:rgb(104, 117, 119);
   --white: #fff;
-  --text: #1f2937;
+  --font-title: "poppins";
+  --font-p: "roboto";
+  --ring: rgba(25,95,99,.35);
+  --surface-ghost: #f7faf9;
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('/fonts/Montserrat-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'roboto';
+  src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'poppins';
+  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
 }

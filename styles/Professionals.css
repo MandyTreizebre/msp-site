@@ -1,0 +1,209 @@
+.pros-section {
+  padding: 60px 0 80px;
+}
+
+/* GRID */
+.pros-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 26px;
+}
+
+/* CARD */
+.pro-card {
+  position: relative;
+  border-radius: 22px;
+  border: 1px solid rgba(25, 95, 99, 0.08);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+    max-width: 520px;
+    background-color: #96aca10a;
+}
+
+.pro-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  border-color: var(--sand-color);
+}
+
+.pro-card-main {
+  padding: 22px 24px 20px;
+}
+
+/* HEADER */
+.pro-card-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.pro-role {
+  margin: 0 0 4px;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #718f8c;
+  font-family: var(--font-p);
+}
+
+.pro-name {
+  margin: 0;
+  font-size: clamp(1.3rem, 1.6vw, 1.5rem);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: #234f4e;
+  font-family: var(--font-title);
+  line-height: 1.2;
+}
+
+.pro-name::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 3px;
+  background: var(--sand-color);
+  border-radius: 999px;
+  margin: 10px auto 30px;
+}
+
+/* Infos adresse / téléphone */
+.pro-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 14px;
+}
+
+.pro-line {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4e6260;
+  font-family: var(--font-p);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 8px;
+  align-items: flex-start;
+}
+
+.pro-icon {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  line-height: 1.4;
+  color: var(--sand-color);
+}
+
+.pro-label {
+  font-weight: 600;
+  color: #274f4d;
+  font-size: 1.2rem;
+}
+
+.pro-phone {
+  font-weight: 600;
+  text-decoration: none;
+  color: #4e6260;
+  font-size: 1.1rem;
+}
+
+/* Zone horaires */
+.pro-hours {
+  border-top: 1px dashed var(--msp-green-dark);
+  padding: 20px 24px 14px;
+}
+
+.pro-hours-title {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--msp-green-light);
+  font-family: var(--font-p);
+  padding-bottom: 10px;
+}
+
+/* Liste des horaires */
+.pro-hours-list {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+
+.pro-hours-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.92rem;
+  padding: 4px 0;
+  border-bottom: 1px dotted var(--msp-green-dark);
+  font-family: var(--font-p);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.pro-hours-list li:last-child {
+  border-bottom: none;
+}
+
+.pro-hours-day {
+  text-transform: capitalize;
+  color: #274f4d;
+  font-weight: 550;
+}
+
+.pro-hours-ranges {
+  color: #5d6f6c;
+  text-align: right;
+}
+
+.pro-no-hours {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #a1ada9;
+  font-style: italic;
+  font-family: var(--font-p);
+}
+
+/* Erreur */
+.pros-error {
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: #fdecea;
+  border: 1px solid #f5b7b1;
+  color: #c0392b;
+  font-size: 0.9rem;
+  font-family: var(--font-p);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .pros-section {
+    padding: 40px 0 60px;
+  }
+
+  .pro-card-main {
+    padding: 18px 18px 14px;
+  }
+
+  .pro-hours {
+    padding: 8px 18px 12px;
+  }
+
+  .pro-hours-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pro-hours-ranges {
+    text-align: left;
+  }
+}
