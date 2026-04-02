@@ -1,4 +1,3 @@
-'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import "../../styles/FirstSection.css"
@@ -7,11 +6,11 @@ const FirstSection = () => {
 
   return ( 
     <section>
-      <section className="welcome-section">
+      <div className="welcome-section">
         <div className="bloc">
           <h1 className="welcome-section-title">Maison de Santé Pluriprofessionnelle de Varennes-sur-Allier</h1>
         </div>
-      </section>
+      </div>
             
             
       {/* Cartes d'accueil */}
