@@ -82,7 +82,7 @@ export default function Header() {
             <ul id="offre-de-soins-menu" role="menu" className={`dropdown-menu ${isOpen ? 'open' : ''}`}>
               {error && <li className="dropdown-error" role="alert">{error}</li>}
               {!error &&specialisations.length === 0 && (
-                <li classeName="dropdown-loading">Chargement...</li>
+                <li className="dropdown-loading">Chargement...</li>
               )}
               
               {specialisations.map((spe) => (

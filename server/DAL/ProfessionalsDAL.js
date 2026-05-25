@@ -25,7 +25,7 @@ class ProfessionalsDAL {
         ORDER BY p.name
       ` 
       const result = await query(sql, [slug]) 
-      return result.rows ?? result 
+      return await query(sql, [slug]) 
     } catch (err) {
       console.error("Erreur lors de la récupération des professionnels :", err) 
       throw new Error("Erreur serveur : Impossible de récupérer les professionnels") 

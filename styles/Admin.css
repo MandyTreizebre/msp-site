@@ -1,0 +1,228 @@
+.admin-page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.admin-title {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: var(--msp-primary-dark);
+  margin-bottom: 32px;
+}
+
+.admin-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(25, 95, 99, 0.15);
+  padding-bottom: 16px;
+}
+
+.admin-nav-btn {
+  font-family: var(--font-p);
+  font-size: 0.95rem;
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(25, 95, 99, 0.2);
+  background: transparent;
+  color: var(--msp-primary-mid);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.admin-nav-btn.active,
+.admin-nav-btn:hover {
+  background: var(--msp-primary-dark);
+  color: #fff;
+  border-color: var(--msp-primary-dark);
+}
+
+.admin-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.admin-section-title {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  color: var(--msp-primary-dark);
+}
+
+.admin-form {
+  background: #f9fafb;
+  border: 1px solid rgba(25, 95, 99, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-form-title {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  color: var(--msp-primary-mid);
+}
+
+.admin-form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 160px;
+}
+
+.admin-label {
+  font-family: var(--font-p);
+  font-size: 0.85rem;
+  color: var(--msp-primary-mid);
+  font-weight: 500;
+}
+
+.admin-select,
+.admin-input {
+  font-family: var(--font-p);
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  border: 1px solid rgba(25, 95, 99, 0.2);
+  border-radius: 10px;
+  color: var(--msp-primary-dark);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.admin-select:focus,
+.admin-input:focus {
+  border-color: var(--msp-primary-dark);
+}
+
+.admin-btn-add {
+  font-family: var(--font-p);
+  font-size: 0.95rem;
+  padding: 12px 28px;
+  background: var(--msp-primary-dark);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  width: fit-content;
+  transition: opacity 0.2s ease;
+}
+
+.admin-btn-add:hover {
+  opacity: 0.85;
+}
+
+.admin-btn-delete {
+  font-family: var(--font-p);
+  font-size: 0.8rem;
+  padding: 6px 14px;
+  background: transparent;
+  color: #e8463a;
+  border: 1px solid #e8463a;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-btn-delete:hover {
+  background: #e8463a;
+  color: #fff;
+}
+
+.admin-hours-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-hours-day {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.admin-hours-dayname {
+  font-family: var(--font-p);
+  font-weight: 600;
+  color: var(--msp-primary-dark);
+  min-width: 100px;
+}
+
+.admin-hours-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-hours-slot {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-p);
+  color: var(--msp-primary-mid);
+}
+
+.admin-exception-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-exception-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border: 1px solid rgba(25, 95, 99, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  gap: 16px;
+}
+
+.admin-exception-date {
+  font-family: var(--font-p);
+  font-weight: 600;
+  color: var(--msp-primary-dark);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.admin-exception-slot,
+.admin-exception-note,
+.admin-exception-replacement {
+  font-family: var(--font-p);
+  font-size: 0.9rem;
+  color: var(--msp-primary-mid);
+  display: block;
+}
+
+.admin-empty {
+  font-family: var(--font-p);
+  color: var(--msp-primary-mid);
+  font-style: italic;
+}
+
+.admin-error {
+  font-family: var(--font-p);
+  color: var(--error);
+  font-size: 0.9rem;
+}

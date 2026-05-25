@@ -6,17 +6,12 @@
 
 /* En-tête */
 .spe-head {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  max-width: 1100px;
-  margin: 0 auto 32px;
-  padding: 0 16px;
+  text-align: center;
 }
 
 .spe-head h2 {
   margin: 0;
-  color: var(--msp-green);
+  color: var(--msp-primary-dark);
   font-family: var(--font-title);
   font-weight: 600;
   font-size: 2rem;
@@ -27,8 +22,7 @@
   font-family: var(--font-p);
   line-height: 1.7;
   font-size: 1.1rem;
-  color: var(--muted);
-  text-align: justify;
+  color: var(--msp-primary-mid);
   letter-spacing:.08em;
   margin-top: 25px;
 }
@@ -44,16 +38,14 @@
   padding: 50px; 
 }
 
-/* Carte individuelle */
 .cards-spe {
-  flex: 1 1 calc(30% - 2rem); 
-  min-width: 170px; 
-  max-width: 270px; 
-  min-height: 100px; 
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); 
-  transition: all 0.9s cubic-bezier(0.25, 0.8, 0.25, 1); 
-  padding: 0 0 15px 0; 
-  background-color: #96aca10a;
+  flex: 1 1 calc(30% - 2rem);
+  min-width: 170px;
+  max-width: 270px;
+  min-height: 100px;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.062), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
   border-radius: 20px;
   border: 1px solid rgba(25, 95, 99, 0.08);
   padding: 18px 16px 16px;
@@ -61,15 +53,30 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
+  cursor: pointer;
 }
+
+.cards-spe::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url(/images/bg-cards.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.20;
+  z-index: 0;
+}
+
 
 .cards-spe-link {
   text-decoration: none;
-  color: inherit;
+  color: var(--msp-primary-dark);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  z-index: 1;
 }
 
 /* Effet hover doux */

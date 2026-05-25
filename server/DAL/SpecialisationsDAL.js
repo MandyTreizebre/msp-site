@@ -6,7 +6,7 @@ class SpecialisationsDAL {
             const rows = await query('SELECT * FROM specialisations')
             return rows
         } catch (err) {
-            console.error("Erreur lors de la récupération des spécialisations")
+            console.error("Erreur lors de la récupération des spécialisations", err)
             throw new Error("Erreur serveur : Impossible de récupérer les spécialisations")
         }
     }

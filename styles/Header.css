@@ -87,7 +87,7 @@
   width: 370px;
   max-width: 370px;
   padding: 8px;
-  background: var(--white);
+  background: white;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0,0,0,.15);
   opacity: 0;

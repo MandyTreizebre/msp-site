@@ -2,7 +2,6 @@
 import {useState, useEffect} from "react"
 import Link from 'next/link'
 import Image from 'next/image'
-import axios from 'axios'
 import "../../styles/News.css"
 
 const NewsSection = () => {
@@ -10,60 +9,81 @@ const NewsSection = () => {
     const [news, setNews] = useState([])
     const [error, setError] = useState(null)
 
-    useEffect(() => {
-        axios.get('/api/news')
-        .then((res) => {
-            setNews(res.data)
-        })
-        .catch(err => {
-           setError("Une erreur s’est produite lors de la récupération des actualités.", err)
-        })
-    }, []) 
-
-    return ( 
-      <section className="section-news">
-        <header className="news-head">
-            <div>
-                <h2>Section des actualités</h2>
+useEffect(() => {
+  fetch('/api/news')
+    .then((res) => {
+      if (!res.ok) throw new Error("Erreur réseau")
+      return res.json()
+    })
+    .then((data) => setNews(data))
+    .catch((err) => {
+      console.error(err)
+      setError("Une erreur s'est produite lors de la récupération des actualités.")
+    })
+}, [])
+    return (
+        <section className="section-news">
+            <header className="news-head">
+                <h2>Actualités</h2>
                 <p className="news-sub">Restez informés des actualités santé de votre territoire.</p>
-            </div>
-        </header>
-        
-        <div className="container-new">
-            {news.map((news, index) => (
-                <div key={index} className="card-new">
-                    <Image
-                        src={news.picture}
-                        alt={news.title}
-                        width={300}
-                        height={200}
-                        className="news-picture"
-                    />
-                    <div className="card-new-body">
-                        <h3>{news.title}</h3>
-                        <p>{news.excerpt}</p>
-                    </div>
-                    
-                    <div className="card-new-footer">
-                        <Link
-                            href={news.link}
-                            aria-label={`Visiter la page de l'actualité`}
-                        >
-                            Lire la suite 
-                        </Link>
-                        <p className="news-created-p">
-                            {new Date(news.created_at).toLocaleDateString('fr-FR', {
-                                day: 'numeric',
-                                month: 'long',
-                                year: 'numeric'
-                            })}
-                        </p>
-                         </div>
-                    </div>
-            ))}
-        </div>    
-      </section>
+            </header>
 
+            <div className="container-new">
+                {news.length > 0 && (
+                    <div className="card-new-featured">
+                        <div className="card-new-featured-img">
+                            <Image
+                                src={news[0].picture}
+                                alt={news[0].title}
+                                fill
+                                style={{ objectFit: 'cover' }}
+                            />
+                        </div>
+                        <div className="card-new-featured-body">
+                            <p className="news-created-p">
+                                {new Date(news[0].created_at).toLocaleDateString('fr-FR', {
+                                day: 'numeric', month: 'long', year: 'numeric'
+                                })}
+                            </p>
+                            <h3>{news[0].title}</h3>
+                            <p>{news[0].excerpt}</p>
+                            <Link href={news[0].link} className="card-new-link">
+                                Lire la suite
+                            </Link>
+                        </div>
+                    </div>
+                )}
+
+                <div className="cards-new-grid">
+                    {news.slice(1).map((item) => (
+                        <div key={item.id} className="card-new">
+                            <div className="card-new-img-wrapper">
+                                <Image
+                                    src={item.picture}
+                                    alt={item.title}
+                                    fill
+                                    style={{ objectFit: 'cover' }}
+                                />
+                            </div>
+                            <div className="card-new-body">
+                                <p className="news-created-p">
+                                    {new Date(item.created_at).toLocaleDateString('fr-FR', {
+                                    day: 'numeric', month: 'long', year: 'numeric'
+                                    })}
+                                </p>
+                                <h3>{item.title}</h3>
+                                <p>{item.excerpt}</p>
+                            </div>
+                            <div className="card-new-footer">
+                                <Link href={item.link} className="card-new-link">
+                                    Lire la suite
+                                </Link>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
     )
 }
 
