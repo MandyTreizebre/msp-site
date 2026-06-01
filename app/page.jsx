@@ -5,7 +5,7 @@ import ZoneMapSection from "../components/homepage/ZoneMapSection"
 
 export default function HomePage() {
   return (
-    <div className="p-8 text-green-800">
+    <div>
       <FirstSection />
       <ZoneMapSection />
       <SpeSection />
